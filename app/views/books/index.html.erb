@@ -1,0 +1,30 @@
+<div>
+ <%= flash[:notice] %>
+</div>
+
+<% if @book.errors.any? %>
+ <%=pluralize(@book.errors.count,"error") %> prohibited this obj from being saved:
+ <ul>
+  <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+ </ul>
+<% end %>   
+
+<div class=user_info>
+ <h2>User info</h2>
+</div>
+
+<div class=new_book>
+ <h2>New book</h2>
+ <%= form_with model:Book.new do |f| %>
+   <h4>Title</h4>
+   <%= f.text_field :title %>
+   <h4>Opinion</h4>
+   <%= f.text_area :body %>
+   <%=f.submit "Create Book" %>
+ <% end %>  
+</div>
+
+<div class=books>
+<h2>Books</h2>
