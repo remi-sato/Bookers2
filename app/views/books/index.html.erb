@@ -1,6 +1,4 @@
-<div>
- <%= flash[:notice] %>
-</div>
+
 
 <% if @book.errors.any? %>
  <%=pluralize(@book.errors.count,"error") %> prohibited this obj from being saved:
@@ -13,6 +11,18 @@
 
 <div class=user_info>
  <h2>User info</h2>
+ 
+ <div class="user_image">
+  <%= image_tag @user.image if @user.image.attached? %>
+ </div>
+ 
+ <p>name</p>
+ <span><%= @user.name %></span>
+
+ <p>introduction</p>
+ <span><%= @user.introduction %></span>
+
+ <%= link_to "Edit Profile",edit_user_path(@user) %>
 </div>
 
 <div class=new_book>
@@ -27,4 +37,19 @@
 </div>
 
 <div class=books>
-<h2>Books</h2>
+ <h2>Books</h2>
+
+ <table>
+ <tr>
+  <th>Title</th>
+  <th>Opinion</th>
+ <tr>
+
+ <% @books.each do |book| %>
+<tr>
+  <td><%= book.title %></td>
+  <td><%= book.body %></td>
+</tr>
+ <% end %>
+</table>  
+</div>  

@@ -24,16 +24,17 @@
 
   <body>
    <header>
+     <li>Bookers
+     </li>
      <li>
-     Home
+     <%=link_to "Home",books_path %>
      </li>
     <% if authenticated? %>
      <li>
-      Users
+      <%= link_to "Users", books_path %>
      </li>
-     <li>
-     <li>Books
-     </li>
+     <li>Books</li>
+
       <%=link_to "Log out", session_path, data: {turbo_method: :delete} %>
      </li>
     <% else %>
@@ -50,6 +51,16 @@
 
 
    </header>
+
+  <% flash.each do |type, message| %>
+   <div class="flash <%= type %>">
+    <%= message %>
+   </div>
+  <% end %>
+
     <%= yield %>
   </body>
+
+  <footer>
+   <h4>CopyRight Infratop.inc</h4>
 </html>
