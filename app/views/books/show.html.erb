@@ -1,0 +1,47 @@
+<div class=user_info>
+ <h2>User info</h2>
+ 
+ <div class="user_image">
+  <%= image_tag @user.profile_image if @user.profile_image.attached? %>
+ </div>
+ 
+ <p>name</p>
+ <span><%= @user.name %></span>
+
+ <p>introduction</p>
+ <span><%= @user.introduction %></span>
+
+ <%= link_to "Edit Profile",edit_user_path(@user) %>
+</div>
+
+<div class=new_book>
+ <h2>New book</h2>
+ <%= form_with model:Book.new do |f| %>
+   <h4>Title</h4>
+   <%= f.text_field :title %>
+   <h4>Opinion</h4>
+   <%= f.text_area :body %>
+   <%=f.submit "Create Book" %>
+ <% end %>  
+</div>
+
+
+<div class= "Book_detail">
+ <h2>Book detail</h2>
+
+ <p>
+<%= @book.user.name %>
+ </p>
+
+<p>
+<%= @book.title %>
+</p>
+
+<p>
+<%= @book.body %>
+</p>
+
+<% if @book.user == current_user %>
+ <%= link_to "Edit", edit_book_path(@book) %>
+ <%= link_to "Destroy", book_path(@book), data:{ turbo_method: :delete, turbo_confirm:"本当に消しますか？"} %>
+<% end %>

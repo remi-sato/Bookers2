@@ -4,18 +4,17 @@ class UsersController < ApplicationController
   def new
     @user=User.new
   end
-
+ 
   def create
     @user=User.new(user_params)
     if @user.save
-    redirect_to new_session_path, notice:"Welcome! You have signed up successfully."
+    start_new_session_for @user
+    redirect_to books_path, notice:"Welcome! You have signed up successfully."
     else
       render :new, status: :unprocessable_entity
+    end  
   end
 
-  def show
-    @user=User.find(params[:id])
-  end
   
   def edit
     @user=User.find(params[:id])
@@ -25,18 +24,26 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      flash[:notice]="You have updated user successfully."
+      redirect_to books_path(@user)
     else
-      render :edit
+      render :edit,status: :unprocessable_entity
     end
   end
 
-end
+  def index
+    @users=User.all
+  end
+
+  def show
+    @user=User.find(params[:id])
+    @books=@user.book_path(user)
+  end 
 
 private
 
 def user_params
-  params.require(:user).permit(:name, :email_address, :password, :password_confirmation, :image, :introduction)
+  params.require(:user).permit(:name, :email_address, :password, :password_confirmation, :profile_image, :introduction)
 end
 
 end
