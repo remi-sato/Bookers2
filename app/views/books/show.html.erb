@@ -1,17 +1,24 @@
-<div class=user_info>
+<div class="user_info">
  <h2>User info</h2>
- 
+
  <div class="user_image">
-  <%= image_tag @user.profile_image if @user.profile_image.attached? %>
+  <% if @user.profile_image.attached? %>
+    <%= image_tag @user.profile_image, size: "100x100" %>
+  <% else %>
+    <%= image_tag "default-image.jpg", size: "100x100" %>
+  <% end %>
  </div>
- 
+
  <p>name</p>
  <span><%= @user.name %></span>
 
  <p>introduction</p>
  <span><%= @user.introduction %></span>
 
- <%= link_to "Edit Profile",edit_user_path(@user) %>
+  <%= link_to edit_user_path(@user) do %>
+  <i class="fa-solid fa-user-gear"></i>
+  <% end %>
+
 </div>
 
 <div class=new_book>

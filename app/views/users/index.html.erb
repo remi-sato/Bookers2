@@ -1,17 +1,25 @@
 <div class="user_info">
-  <h2>User info</h2>
-
-  <% @users.each do |user| %>
-
+ <h2>User info</h2>
+ 
   <div class="user_image">
-    <% if user.profile_image.attached? %>
-      <%= image_tag user.profile_image %>
+    <% if @user.profile_image.attached? %>
+      <%= image_tag @user.profile_image, size: "100x100" %>
     <% else %>
-      <%= image_tag "default-image.jpg" %>
+      <%= image_tag "default-image.jpg", size: "100x100" %>
     <% end %>
   </div>
+ 
+ <p>name</p>
+ <span><%= @user.name %></span>
 
+ <p>introduction</p>
+ <span><%= @user.introduction %></span>
+ 
+  <%= link_to edit_user_path(@user) do %>
+  <i class="fa-solid fa-user-gear"></i>
 <% end %>
+
+</div>
 
 <div class=new_book>
  <h2>New book</h2>
@@ -40,9 +48,9 @@
 
      <td>
       <% if user.profile_image.attached? %>
-        <%= image_tag user.profile_image %>
+        <%= image_tag user.profile_image ,size: "100x100" %>
       <% else %>
-        <%= image_tag "default-image.jpg" %>
+        <%= image_tag "default-image.jpg" ,size: "100x100" %>
       <% end %>
      </td>
     

@@ -1,5 +1,12 @@
-<h2>Editing Book</h2>
+<% if @book.errors.any? %>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
+<h2>Editing Book</h2>
 
 <%= form_with model: @book do |f| %> 
 

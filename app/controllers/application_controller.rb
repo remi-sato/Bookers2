@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
   def after_logout_url
     root_path
   end
+
+  def require_login
+    redirect_to new_session_path unless current_user
+  end
+
 end

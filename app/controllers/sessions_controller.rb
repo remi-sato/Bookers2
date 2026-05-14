@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if (user = User.find_by(name: params[:name]))&.authenticate(params[:password])
       start_new_session_for user
       flash[:notice]= "Signed in successfully."
-      redirect_to books_path
+      redirect_to user_path(user)
     else
       redirect_to new_session_path, alert: "Try another email address or password."
     end
