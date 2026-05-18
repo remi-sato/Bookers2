@@ -1,15 +1,30 @@
+<p id="notice"></p>
+
+<div class="container">
+ <div class="row">
+  <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
 <h1>welcome to 
 <i class="fa-solid fa-book"></i>
-Bookers!!</h1>
+<strong>Bookers</strong>!!</h1>
 
-<h4>In 
+<p>In 
 <i class="fa-solid fa-book"></i>
-Bookers,</h4>
+<strong>Bookers</strong>,</p>
 
-<h4>you can share and exchange your opinions , inpressions , and emotions</h4>
+<p>you can share and exchange your opinions , inpressions , and emotions</p>
 
-<h4>about various books!</h4>
+<p>about various books!</p>
 
-<%= link_to "Log in", new_session_path %>
+<div class="btn-wrapper col-10 mx-auto">
+ <div class="row">
+<%= link_to "Log in", sign_in_path, class:"btn btn-info btn-sm btn-block mb-3 text-white" %>
+ </div>
+ 
+ <div class="row">
+<%= link_to "Sign up", new_user_path, class: "btn btn-success btn-sm btn-block" %>
+ </div>
+</div>
 
-<%= link_to "Sign up", new_user_path %>
+  </div>
+ </div>
+</div>
