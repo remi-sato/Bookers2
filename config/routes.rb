@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :books,only: [:index, :create, :show, :edit, :destroy, :update]
 
   root to: "homes#top"
-  get "/about",to:"homes#about",as: "about"
+  get "/home/about",to:"homes#about",as: "home_about"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user=User.new(user_params)
     if @user.save
     start_new_session_for @user
-    redirect_to books_path, notice:"Welcome! You have signed up successfully."
+    redirect_to user_path(@user), notice:"Welcome! You have signed up successfully."
     else
       render :new, status: :unprocessable_entity
     end  
@@ -51,7 +51,7 @@ end
  def is_matching_login_user
    user=User.find(params[:id])
    unless user.id == current_user.id
-    redirect_to new_session_path
+    redirect_to user_path(current_user)
    end
   end 
 

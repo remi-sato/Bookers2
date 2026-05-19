@@ -38,7 +38,7 @@
         <% if current_user %>
 
           <li class="nav-item">
-            <%= link_to books_path, class: "nav-link text-white" do %>
+            <%= link_to user_path(current_user), class: "nav-link text-white" do %>
               <i class="fa-solid fa-house me-1"></i> Home
             <% end %>
           </li>
@@ -72,7 +72,7 @@
           </li>
 
           <li class="nav-item">
-            <%= link_to about_path, class: "nav-link text-white" do %>
+            <%= link_to home_about_path, class: "nav-link text-white" do %>
               <i class="fa-solid fa-link me-1"></i> About
             <% end %>
           </li>
@@ -84,7 +84,7 @@
           </li>
 
           <li class="nav-item">
-            <%= link_to sign_in_path, class: "nav-link text-white" do %>
+            <%= link_to new_session_path, class: "nav-link text-white" do %>
               <i class="fa-solid fa-right-to-bracket me-1"></i> Log in
             <% end %>
           </li>
