@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "create/destroy"
   get "favorites/create"
   get "favorites/destroy"
   get "/users/sign_in", to: "sessions#new", as: :sign_in
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   resources :books,only: [:index, :create, :show, :edit, :destroy, :update]
   resources :books do
    resources :favorites, only: [:create, :destroy]
+   resources :book_comments, only: [:create, :destroy]
   end
   root to: "homes#top"
   get "/home/about",to:"homes#about",as: "home_about"
