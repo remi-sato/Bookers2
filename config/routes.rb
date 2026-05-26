@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  get "relationships/followings"
+  get "relationships/followers"
   get "create/destroy"
   get "favorites/create"
   get "favorites/destroy"
   get "/users/sign_in", to: "sessions#new", as: :sign_in
-  resources :users, only: [:new, :create, :edit, :update, :index, :show],path_names:{ new:"sign_up"}
+  resources :users, only: [:new, :create, :edit, :update, :index, :show],path_names:{ new:"sign_up"} do
+   resource :relationships, only: [:create, :destroy]
+   get "followings" => "relationships#followings", as: "followings"
+   get "followers" => "relationships#followers", as: "followers"
+  end
   resource :session
   resources :passwords, param: :token
   resources :books,only: [:index, :create, :show, :edit, :destroy, :update]

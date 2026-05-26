@@ -1,0 +1,32 @@
+<% if users.exists? %>
+ <% users.each do |user| %>
+  <table class="table w-100">
+   <thead>
+    <tr>
+     <th>image</th>
+     <th>name</th>
+     <th></th>
+    </tr>
+   <thead>
+   <tbody>
+    <tr>
+     <td>
+      <% if user.profile_image.attached? %>
+       <%= image_tag user.profile_image, size: "80x80" %>
+      <% else %>
+      <%= image_tag "default-image.jpg", size: "80x80" %>
+      <% end %>
+     </td>
+     <td><%= user.name %></td>
+     <td>フォロー数: <%= user.followings.count %></td>
+     <td>フォロワー数: <%= user.followers.count %></td>
+     <td><%= link_to "show", user_path(user) %></td>
+    </tr>
+   </tbody>
+  </table>
+ <% end %>
+<% else %>
+ <p>ユーザーはいません</p>
+<% end %>
+
+
