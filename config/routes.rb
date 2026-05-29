@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   resources :books,only: [:index, :create, :show, :edit, :destroy, :update]
   resources :books do
-   resources :favorites, only: [:create, :destroy]
+   resource :favorite, only: [:create, :destroy]
    resources :book_comments, only: [:create, :destroy]
   end
   root to: "homes#top"
