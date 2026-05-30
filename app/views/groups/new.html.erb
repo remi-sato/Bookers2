@@ -1,0 +1,32 @@
+<div style= "width: 400px; margin: 0 auto ;">
+
+<h2>Create Group</h2>
+
+<%= form_with model: @group do |f| %>
+
+ <p> 
+ <%= f.label :name, "グループ名" %>
+ </p>
+ <p>
+  <%= f.text_field :name %>
+ </p>
+ 
+ <p>
+ <%= f.label :introduction, "紹介文" %>
+ </p>
+ <p>
+  <%= f.text_area :introduction %>
+ </p>
+
+ <p>
+ <%= f.label :group_image, "グループ画像" %>
+ </p>
+ <p>
+  <%= f.file_field :group_image %>
+ </p>
+
+ <%= f.submit "Create Group",class: "btn btn-info text-white" %>
+
+<% end %>
+
+</div>
