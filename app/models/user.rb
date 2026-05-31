@@ -63,4 +63,8 @@ class User < ApplicationRecord
       User.all
     end
   end
+
+  def joined?(group)
+   groups.exists?(group.id)
+  end
 end
